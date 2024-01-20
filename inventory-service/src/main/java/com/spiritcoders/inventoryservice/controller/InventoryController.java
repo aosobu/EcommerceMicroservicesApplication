@@ -1,9 +1,12 @@
 package com.spiritcoders.inventoryservice.controller;
 
+import com.spiritcoders.inventoryservice.dto.InventoryResponse;
 import com.spiritcoders.inventoryservice.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,7 +17,7 @@ public class InventoryController {
 
     @GetMapping("/sku-code")
     @ResponseStatus(HttpStatus.OK)
-    public boolean isInStock(@PathVariable("sku-code") String skuCode){
-        return inventoryService.isInStock(skuCode);
+    public List<InventoryResponse> isInStock(@RequestParam List<String> skuCodeList){
+        return inventoryService.isInStock(skuCodeList);
     }
 }
