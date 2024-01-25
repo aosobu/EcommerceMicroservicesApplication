@@ -11,16 +11,16 @@ import java.util.List;
 @Component
 public class WebClientWrapper {
 
-    private final WebClient webClient;
+    private final WebClient.Builder webClient;
 
     public Class [] fetch(String uri, Class expectedClass, List<?> requestParams, String paramName){
-        return (Class []) webClient.get().uri(uri, uriBuilder -> uriBuilder.queryParam(paramName, requestParams).build())
+        return (Class []) webClient.build().get().uri(uri, uriBuilder -> uriBuilder.queryParam(paramName, requestParams).build())
                         .retrieve().bodyToMono(expectedClass)
                             .block();
     }
 
     public InventoryResponse[] fetchTemp(String uri, List<?> requestParams, String paramName){
-        return webClient.get().uri(uri, uriBuilder -> uriBuilder.queryParam(paramName, requestParams).build())
+        return webClient.build().get().uri(uri, uriBuilder -> uriBuilder.queryParam(paramName, requestParams).build())
                 .retrieve().bodyToMono(InventoryResponse[].class)
                 .block();
     }
