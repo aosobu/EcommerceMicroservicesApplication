@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class ProductRetrieveComponent {
-    private ProductEntityManager productEntityManager;
+    private final ProductEntityManager productEntityManager;
     public List<ProductResponse> getProducts(){
         List<Product> products = productEntityManager.getProducts();
         return products.parallelStream().map(this::mapToProductResponse).toList();

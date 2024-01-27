@@ -12,14 +12,15 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ProductSaveComponent {
 
-    private ProductEntityManager productEntityManager;
+    private final ProductEntityManager productEntityManager;
 
     public Product saveProduct(ProductRequest productRequest){
 
         Product product = mapProductRequestToProduct(productRequest);
-        log.info("Product is {} is save", product.getId());
+        Product savedProduct =  productEntityManager.saveProduct(product);
 
-        return productEntityManager.saveProduct(product);
+        log.info("Product is {} is save", savedProduct.getId());
+        return savedProduct;
     }
 
     private Product mapProductRequestToProduct(ProductRequest productRequest){

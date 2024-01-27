@@ -22,11 +22,11 @@ public class ProductServiceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ProductRequest productRequest = ProductRequest.builder()
-				.name("Bandana Ravens")
-				.description("trendy bandana for men")
-				.price(new BigDecimal(3500))
-				.build();
-		productService.createProduct(productRequest);
+//		ProductRequest productRequest = ProductRequest.builder()
+//				.name("Bandana Ravens")
+//				.description("trendy bandana for men")
+//				.price(new BigDecimal(3500))
+//				.build();
+//		productService.createProduct(productRequest);
 	}
 }

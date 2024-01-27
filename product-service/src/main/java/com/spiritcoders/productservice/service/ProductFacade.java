@@ -7,15 +7,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 @Component
 @RequiredArgsConstructor
 public class ProductFacade {
 
-    private ProductOperations productOperations;
+    private final ProductOperations productOperations;
 
     public Product saveProduct(ProductRequest productRequest){
         return productOperations.saveProduct(productRequest);
+    }
+
+    public Product saveProducts(Supplier<Product> productSaveProcess ) {
+        return productSaveProcess.get();
     }
 
     public List<ProductResponse> getProducts(){

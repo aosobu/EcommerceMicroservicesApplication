@@ -13,9 +13,9 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class ProductOperations {
-    private ProductSaveComponent productSaveComponent;
+    private final ProductSaveComponent productSaveComponent;
 
-    private ProductRetrieveComponent productRetrieveComponent;
+    private final ProductRetrieveComponent productRetrieveComponent;
 
     public Product saveProduct(ProductRequest productRequest){
         return productSaveComponent.saveProduct(productRequest);

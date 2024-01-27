@@ -40,11 +40,11 @@ public class OrderService {
 
         order.setOrderLineItemsList(orderLineItems);
 
-        List<String> skuCodes = orderLineItems.stream()
+        List<String> skuCodeList = orderLineItems.stream()
                 .map(OrderLineItems::getSkuCode)
                 .toList();
 
-        InventoryResponse [] inventoryResponseArray = webClientWrapper.fetchTemp("http://localhost:8082/api/inventory", skuCodes, "skuCode");
+        InventoryResponse [] inventoryResponseArray = webClientWrapper.fetchTemp("http://localhost:56395/api/v1/inventory/sku-code", skuCodeList, "skuCodeList");
 
         boolean allProductsInStock =
                 Arrays.stream(inventoryResponseArray)
